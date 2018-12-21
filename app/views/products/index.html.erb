@@ -20,12 +20,13 @@
         </dl>
       </td>
 
-    <td class='list_actions'>
-      <%= link_to 'Show', product %><br/>
-      <%= link_to 'Edit', edit_product_path(product) %><br/>
-      <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <td class='list_actions'>
+        <%= link_to 'Show', product %><br/>
+        <%= link_to 'Edit', edit_product_path(product) %><br/>
+        <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
       </td>
-    </td>
+    </tr>
   <% end %>
 </table>
 
