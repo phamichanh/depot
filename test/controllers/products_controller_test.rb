@@ -4,7 +4,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @product = products(:one)
     @update = {
-       title: 'Test Book',
+       title: 'The New Test Book',
        description: 'This books content is about testing',
        image_url: 'ruby.jpg',
        price: 9.99
@@ -14,6 +14,18 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     get products_url
     assert_response :success
+    assert_select '#main .list_line_odd', 2
+    assert_select '#main .list_line_odd .list_image', 2
+    assert_select '#main .list_line_odd .list_description', 2
+    assert_select '#main .list_line_odd .list_actions', 2
+    assert_select '#main .list_line_odd .list_actions a', minimum: 3
+    assert_select '#main .list_line_odd .list_description dt', 'Programming Ruby 1.9 & 2.0'
+
+    assert_select '#main .list_line_even', 1
+    assert_select '#main .list_line_even .list_image', 1
+    assert_select '#main .list_line_even .list_description', 1
+    assert_select '#main .list_line_even .list_actions', 1
+    assert_select '#main .list_line_even .list_actions a', minimum: 3
   end
 
   test "should get new" do
