@@ -2,8 +2,10 @@
     <p id = "notice"><%= notice %></p>
 <% end %>
 
+<% if @access_time > 5 %>
+    <p>Count: <%= @access_time %></p>
+<% end %>
 <h1>Your Book Catalog</h1>
-
 <% cache ['store', Product.latest] do %>
     <% @products.each do |product| %>
         <% cache ['entry', product] do %>
@@ -13,6 +15,7 @@
                 <%= sanitize(product.description) %>
                 <div class="price-line">
                   <span class="price"><%= number_to_currency(product.price) %></span>
+                  <%= button_to 'Add to Cart', line_items_path(product_id: product), remote: true %>
                 </div>
             </div>
         <% end %>

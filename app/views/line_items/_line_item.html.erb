@@ -1,0 +1,6 @@
+<tr>
+  <td><%= line_item.quantity %> &times; </td>
+  <td><%= line_item.product.title %></td>
+  <td class="item-price"><%= number_to_currency(line_item.total_price) %></td>
+  <td><%= button_to "Delete", line_item, method: :delete, data: { confirm: 'Are you sure to delete this book?' }, remote: true %></td>
+</tr>

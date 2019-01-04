@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  rescue_from ActiveRecord::InvalidForeignKey, with: :product_is_in_cart
 
   # GET /products
   # GET /products.json
@@ -70,5 +71,10 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:title, :description, :image_url, :price)
+    end
+
+    def product_is_in_cart
+      logger.error "Can not delete product #{params[:id]} in cart"
+      redirect_to products_url, notice: "Can not delete product in cart!"
     end
 end
