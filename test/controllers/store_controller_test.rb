@@ -10,4 +10,10 @@ class StoreControllerTest < ActionDispatch::IntegrationTest
     assert_select '.price', /\$[,\d]+\.\d\d/
   end
 
+  test "markup needed for store.js.coffee in this place" do
+    get store_path
+    assert_select '.store .entry > img', 3
+    assert_select '.entry input[type=submit]', 3
+  end
+
 end

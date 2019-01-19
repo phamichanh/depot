@@ -1,3 +1,4 @@
+<% unless cart.line_items.empty? %>
 <h2>Your book cart</h2>
 <table>
   <%= render(cart.line_items) %>
@@ -7,5 +8,5 @@
     <td class="total-cell"><%= number_to_currency(cart.total_price) %></td>
   </tr>
 </table>
-<%= button_to 'Empty cart', cart, method: :delete, data: { confirm: 'Are you sure to empty cart?' } %>
-
+<%= button_to 'Empty cart', cart, method: :delete, data: { confirm: 'Are you sure to empty cart?' }, remote: true %>
+<% end %>
