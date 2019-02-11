@@ -1,5 +1,10 @@
+require 'active_model/serializers/xml'
 class Product < ApplicationRecord
+  include ActiveModel::Serializers::Xml
+
   has_many :line_items
+  has_many :orders, through: :line_items
+
   before_destroy :ensure_not_referenced_by_any_line_item
 
   validates :title, :description, :image_url, presence: true
