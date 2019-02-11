@@ -75,6 +75,18 @@ class ProductsController < ApplicationController
     end
   end
 
+  include ActionController::Live
+  def download
+    response.headers['Content-Type'] = 'text/plain'
+    40.times do |i|
+      response.stream.write "Line #{i}\n\n"
+      sleep 0.10
+    end
+    response.stream.write "Fini.\n"
+  ensure
+    response.stream.close
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product

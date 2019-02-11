@@ -24,6 +24,7 @@
               <% end %>
             </div>
         <% end %>
+        <%= render Order.find(session[:order_id]) if session[:order_id] -%>
         <ul>
           <li><a href="http://localhost:3000/">Home</a></li>
           <li><a href="https://www.../fag">Questions</a></li>

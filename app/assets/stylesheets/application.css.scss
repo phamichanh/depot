@@ -59,9 +59,14 @@
       font-size: small;
     }
 
-    #cart {
+    #cart, #order {
       font-size: smaller;
       color: white;
+
+      a, a:hover {
+        color: white;
+        background-color: #141;
+      }
 
       table {
         border-top: 1px dotted #595;
