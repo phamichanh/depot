@@ -16,8 +16,8 @@
 </p>
 
 <p>
-  <strong>Pay type:</strong>
-  <%= @order.pay_type %>
+  <strong>Payment type:</strong>
+  <%= @order.payment_type.present? ? @order.payment_type.name : "No Payment type" %>
 </p>
 
 <%= link_to 'Edit', edit_order_path(@order) %> |

@@ -1,0 +1,10 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+check:
+  name: Check
+
+credit:
+  name: Credit Card
+
+cod:
+  name: COD

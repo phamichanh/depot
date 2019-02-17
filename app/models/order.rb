@@ -3,10 +3,10 @@ class Order < ApplicationRecord
   include ActiveModel::Serializers::Xml
 
   has_many :line_items, dependent: :destroy
+  belongs_to :payment_type
 
-  PAYMENT_TYPES = [ "Check", "Credit Card", "Purchase Order" ]
   validates :name, :address, :email, presence: true
-  validates :pay_type, inclusion: PAYMENT_TYPES
+  validates_associated :payment_type
 
   def add_line_items_from_cart(cart)
     cart.line_items.each do |item|

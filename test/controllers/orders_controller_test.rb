@@ -27,7 +27,8 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create order" do
     assert_difference('Order.count') do
-      post orders_url, params: { order: { address: @order.address, email: @order.email, name: @order.name, pay_type: @order.pay_type } }
+      post orders_url, params: { order: { address: @order.address, email: @order.email,
+                                          name: @order.name, payment_type_id: @order.payment_type_id } }
     end
 
     assert_redirected_to store_path
@@ -44,7 +45,8 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update order" do
-    patch order_url(@order), params: { order: { address: @order.address, email: @order.email, name: @order.name, pay_type: @order.pay_type } }
+    patch order_url(@order), params: { order: { address: @order.address, email: @order.email,
+                                                name: @order.name, payment_type_id: @order.payment_type_id } }
     assert_redirected_to order_url(@order)
   end
 
