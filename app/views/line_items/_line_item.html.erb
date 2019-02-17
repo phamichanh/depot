@@ -3,10 +3,12 @@
 <% else %>
 <tr>
 <% end %>
-  <td><%= line_item.quantity %> &times; </td>
+  <td><%= line_item.quantity %> &times;</td>
   <td><%= line_item.product.title %></td>
   <td class="item-price"><%= number_to_currency(line_item.total_price) %></td>
-  <td><%= link_to "<", line_item_increment_url(line_item.id), method: :put, remote: true  %></td>
-  <td><%= link_to ">", line_item_decrement_url(line_item.id), method: :put, remote: true  %></td>
-  <td><%= button_to "Delete", line_item, remote: true, method: :delete %></td>
+  <% if @cart %>
+    <td><%= link_to "<", line_item_increment_url(line_item.id), method: :put, remote: true  %></td>
+    <td><%= link_to ">", line_item_decrement_url(line_item.id), method: :put, remote: true  %></td>
+    <td><%= button_to "Delete", line_item, remote: true, method: :delete %></td>
+  <% end %>
 </tr>
